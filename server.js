@@ -43,6 +43,11 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "dist")));
 
+
+app.get("/point", (req, res) => {
+  res.status(200).send({status: "success"})
+})
+
 // Handle all routes by serving the index.html file
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
