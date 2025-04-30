@@ -55,4 +55,12 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
+  setInterval(async () => {
+    try {
+      const res = await fetch(`http://localhost:${port}`);
+      console.log(`Self-request sent. Status: ${res.status}`);
+    } catch (err) {
+      console.error('Self-request failed:', err.message);
+    }
+  }, 600_000);
 });
